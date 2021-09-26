@@ -1,0 +1,280 @@
+Login
+- App component
+- Navigation component
+- Sign in Component
+- Select User component
+- Users component
+
+
+
+
+Answered/Unanswered Questions
+- App component
+- Navigation component
+- Would You Rather component
+- Asked/Unanswered tab component
+- Show user component
+- Logout component
+
+
+
+
+Would you rather
+- App component
+- Navigation component
+- Would You Rather component
+- Question component
+- Show user component
+- Logout component
+
+Results
+- App component
+- Navigation component
+- Would You Rather component
+- Poll component
+- Show user component
+- Logout component
+
+
+Leaderboard
+
+- App component
+- Navigation component
+- Would You Rather component
+- Total scores
+- Show user component
+- Logout component
+
+
+
+- App component
+- Navigation component
+- New Question component
+- Show user component
+- Logout component
+
+
+
+All views:
+
+
+    Answered/Unanswered Questions
+    Leaderboard
+    Login
+    Results
+    Would you rather
+	Create New Question
+
+
+
+
+       6 | - Navigation component
+       5 | - Logout component
+       5 | - Show user component
+       4 | - Would You Rather component
+       1 | - Asked/Unanswered tab component
+       1 | - New Question component
+       1 | - Poll component
+       1 | - Question component
+       1 | - Select User component
+       1 | - Sign in Component
+       1 | - Total scores
+       1 | - Users component
+
+
+
+
+
+
+
+
+
+       6 | - Navigation component na
+       5 | - Logout component na
+       5 | - Show user component 
+	   
+----------------------------------------------------------------
+	   
+	   
+	   Components and their actions
+	   
+	   
+	   
+	   
+	   
+1 | - Login 
+
+			getLoggedInUser - to show logged in user
+
+4 | - Would You Rather component
+
+			getQuestions - get Users questions
+			getLoggedInUser - to only show yours questions 
+
+1 | - Asked/Unanswered tab component
+
+			getLoggedInUser - to see missing questions
+			getUnansweredQuestions -
+			getAnsweredQuestions
+
+1 | - New Question component
+
+			getLoggedInUser to see who is making the question
+			setText - set question
+			setOptions - set options
+	
+
+1 | - Poll component
+
+			getPollDataForQuestion to see the poll data for each question
+
+
+
+1 | - Question component
+
+			getQuestions
+			getOptions
+
+1 | - Select User component
+
+			setLoggedInUser
+
+
+
+1 | - Sign in Component
+
+			getUsers
+
+1 | - Total scores
+
+			getUserTotalScore
+
+1 | - Users component
+
+			getUsers
+
+--------------------------------------------------------------------------
+What actions are taken in each component?
+
+* = views
+
+
+    Answered/Unanswered Questions -*
+	
+	getLoggedInUser - to see missing questions
+	getUnansweredQuestions - get all unanswered question for the user
+	getAnsweredQuestions . get all answered questions for user
+	
+	
+	Would You Rather -*
+	
+	
+	getQuestions - to show a specific question and by whom
+	getOptions - to show a specific option
+	
+	
+	
+    Leaderboard *
+
+
+	getUsers - get all users to see their questions and answeres
+	getUserTotalScore -  get total score for each users
+	
+	
+	Login *
+	
+	getUsers - get All users from logged in 
+	setLoggedInUser - set logged in user
+	
+	
+	Results *
+		showQuestion get specific question
+		getPollDataForQuestion to see the poll data for each question
+	
+	
+	Create New Question *
+	
+	getUsers - get specific user to show who is asking
+	setText - set question
+	setOptions - set options
+	
+	
+	
+	
+	
+	
+	
+	
+	---------------------------------------------------------------------
+	
+
+
+Determine What Data Lives in the Store
+
+Only used in one place:
+
+
+						Use in state:
+
+						CreateNewQuestion component
+
+						setText
+						setOptions
+
+
+Used in multiple places:
+
+						Use in Store:
+
+
+							Questions
+
+
+								Used in:
+
+									Question component, 
+									Would you rather, 
+									Poll component,
+									Asked/Unanswered tab component
+									getPollDataForQuestion
+
+
+
+							Users
+
+								Used in:
+
+
+									
+									Sign in Component
+									Login 
+									Users component
+									Total scores
+									Select User component
+									Asked/Unanswered tab component
+									
+									
+									
+								
+							
+							
+							loggedInUser
+								
+								Used in
+								
+									Create New Question component - to see which user created question
+									Poll - to store the user answer
+									Asked/Unanswered tab component
+									
+								
+									
+								
+							
+									
+									
+							
+
+
+
+
+
