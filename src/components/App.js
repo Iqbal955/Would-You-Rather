@@ -1,10 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import {handleInitialData} from "../actions/shared";
+import { handleInitialData } from "../actions/shared";
 
 class App extends Component {
     componentDidMount() {
-    this.props.dispatch(handleInitialData());
+
+        this.props.dispatch(handleInitialData());
+
     }
     render() {
         return (
@@ -16,9 +18,9 @@ class App extends Component {
 }
 
 
-export default connect()(App)
+export default connect()(null, { handleInitialData })(App)
 
-/*question 4? so the reason 
+/*question 4? so the reason
 we need to use connect is because of this:
 
 
