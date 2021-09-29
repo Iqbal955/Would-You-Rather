@@ -4,8 +4,8 @@ import { applyMiddleware } from "redux"
 
 
 
-export default applyMiddleware({
+export default applyMiddleware(
 thunk,
 logger,
-})
+)
 

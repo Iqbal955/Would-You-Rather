@@ -1,6 +1,6 @@
 import { getInitialData } from "../utils/api"
 import { receiveUsers } from "./users"
-import {receiveQuestion} from ".questions"
+import {receiveQuestion} from "./questions"
 import { loggedInUser } from "./loggedInUser"
 
 
