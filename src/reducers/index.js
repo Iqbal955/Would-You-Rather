@@ -6,7 +6,7 @@ import questions from "./questions"
 
 
 export default combineReducers({
-    loggedInUser,
     users,
+    loggedInUser,
     questions,
 })

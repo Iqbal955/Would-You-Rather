@@ -18,7 +18,7 @@ class App extends Component {
 }
 
 
-export default connect()(null, { handleInitialData })(App)
+export default connect()(App)
 
 /*question 4? so the reason
 we need to use connect is because of this:
