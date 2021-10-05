@@ -1,6 +1,11 @@
-import { RECEIVE_USERS } from "../actions/users";
+import { RECEIVE_USERS, SET_USER } from "../actions/users";
 
-
+const user1 = {
+    name: "Abdul Rahman",
+    username: 'R4hm4n',
+    password: "",
+    
+}
 
 
 export default function users (state = {}, action) {
@@ -10,7 +15,9 @@ export default function users (state = {}, action) {
            return {
                ...state,
                ...action.users,     
-           }   
+           }  
+        case SET_USER :
+            return {...state, currentUser: action.userData}
            default: 
            return state;
 

@@ -1,24 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { loggedInUser } from "../actions/loggedInUser";
 import { handleInitialData } from "../actions/shared";
+import { setUser } from "../actions/users";
 
 class App extends Component {
+
     componentDidMount() {
-
-        this.props.dispatch(handleInitialData());
-
+        
+        // this.props.dispatch(handleInitialData());
     }
+
+
     render() {
+
         return (
+
             <div>
-                Start 123
-            </div>
+                <button onClick={ () => console.log(this.props.everything)}>Return all</button>
+            </div >
         )
     }
 }
 
+const mapStateToProps = (state) => ({
+    everything: state,
+})
 
-export default connect()(App)
+export default connect(mapStateToProps)(App)
 
 /*question 4? so the reason
 we need to use connect is because of this:
