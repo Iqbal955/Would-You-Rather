@@ -1,17 +1,14 @@
 export const RECEIVE_USERS = "RECEIVE_USERS"
 export const SET_USER = 'SET_USER'
 
-export function receiveUsers (users) {
+export function receiveUsers(users) {
 
     return {
-    type: RECEIVE_USERS,
-    users
-}
-}
+        type: RECEIVE_USERS,
+        users
+    }
+} 
 
-export function setUser (userData) {
-    return  { type: SET_USER, userData}
-}
 
 
 

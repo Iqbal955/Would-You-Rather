@@ -2,6 +2,7 @@ import { getInitialData } from "../utils/api"
 import { receiveUsers } from "./users"
 import {receiveQuestion} from "./questions"
 import { loggedInUser } from "./loggedInUser"
+import { wonUser } from "./loggedInUser"
 
 
 export function handleInitialData () {
@@ -10,7 +11,9 @@ export function handleInitialData () {
         .then(({users, questions}) => {
             dispatch(receiveUsers(users))
             dispatch(receiveQuestion(questions))
-            dispatch(loggedInUser(users)) //maybe to discuss?
+            dispatch(loggedInUser(users))
+            dispatch(wonUser(users))
+ //maybe to discuss?
             
 
         })
