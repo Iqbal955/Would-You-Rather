@@ -5,14 +5,14 @@ import { handleInitialData } from "../actions/shared";
 import { receiveUsers } from "../actions/users";
 import { setUser } from "../actions/users";
 import users from "../reducers/users";
-import { WouldYouRather } from "./WouldYouRather"
+import WouldYouRather  from "./WouldYouRather"
 
 class App extends Component {
 
 
 
     componentDidMount() {
-        this.props.dispatch(handleInitialData());
+    this.props.dispatch(handleInitialData());
     }
 
     render() {
@@ -21,10 +21,7 @@ class App extends Component {
         return (
             <div>
                 <h1>
-                    {Object.keys(this.props.questionsID).map((question) => {
-                        return <h1>{question}</h1>
 
-                    })}
                 </h1>
                 <WouldYouRather />
 
