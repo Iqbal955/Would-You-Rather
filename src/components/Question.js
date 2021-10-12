@@ -6,7 +6,9 @@ export class Question extends Component {
     render() {
         return (
             <div>
-                {this.props}
+            
+    {console.log(this.props)}
+ 
             </div>
         )
     }
@@ -14,10 +16,14 @@ export class Question extends Component {
 
 function mapStateToProps({users, questions, loggedInUser},{id}) {
     const question = questions[id];
+   const {optionOne, optionTwo, author} = question
+
+
+ 
 
     return {
         loggedInUser, 
-        question: formatQuestion(question.optionOne, question.optionTwo, question.author)
+    question: formatQuestion({optionOne, optionTwo, author})
 
     }
 }
