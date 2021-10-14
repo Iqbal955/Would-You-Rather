@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {formatQuestion} from "../utils/_DATA"
+import AskedUnansweredQuestions from "./AskedUnansweredQuestions"
 
 export class Question extends Component {
     render() {
         return (
             <div>
             
-    {console.log(this.props)}
+    
+        <AskedUnansweredQuestions/>
  
             </div>
         )
@@ -15,18 +17,28 @@ export class Question extends Component {
 }
 
 function mapStateToProps({users, questions, loggedInUser},{id}) {
-    const question = questions[id];
+
+   const question = questions[id];
    const {optionOne, optionTwo, author} = question
+   const optionOneText = optionOne.text
+   const optionTwoText = optionTwo.text
+
+    //checking the votes, if the user is not part of the votes, then clearly this question is not
+    //is unanswered.
+    loggedInUser = "sarahedo"
 
 
- 
+    
 
     return {
         loggedInUser, 
-    question: formatQuestion({optionOne, optionTwo, author})
+    question: formatQuestion({optionOneText, optionTwoText, author})
 
     }
 }
+
+
+
 
 
     /* 
