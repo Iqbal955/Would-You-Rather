@@ -9,10 +9,11 @@ export class AskedUnansweredQuestions extends Component {
         const votesProps = this.props.optionOne.votes;
         const question = this.props.question
         const users = this.props.users;
+        const loggedInUser = this.props.loggedInUser;
 
         return (
             <div>
-                {console.log(this.props.users)}
+                {console.log(loggedInUser.answers)}
 
 
 
@@ -20,16 +21,12 @@ export class AskedUnansweredQuestions extends Component {
 
 
                     (Object.keys(users[key].answers).map((user) => {
-                        return {user}
-
+                        return { user }
                     })
-
                     )
-
                 })}
                 </h1>
-                <p>
-                </p>
+
 
 
             </div>
@@ -40,7 +37,8 @@ export class AskedUnansweredQuestions extends Component {
 const mapStateToProps = (state, { question }) => {
     return {
         question,
-        users: state.users
+        users: state.users,
+        loggedInUser: state.users.sarahedo
     }
 }
 
