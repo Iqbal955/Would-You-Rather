@@ -9,25 +9,45 @@ export class AskedUnansweredQuestions extends Component {
         const votesProps = this.props.optionOne.votes;
         const question = this.props.question
         const users = this.props.users;
-        const loggedInUser = this.props.loggedInUser;
+        const loggedInUser = this.props.loggedInUser.answers;
+
+        const loggedInUserAnsweredQuestions = "";
+        const questionParsed = "";
+
 
         return (
             <div>
-                {console.log(loggedInUser.answers)}
+                <p>
+                    {Object.keys(loggedInUser).map((id) => {
+
+                        const loggedInUserAnsweredQuestions = id;
+
+                        {
+                            Object.keys(question.id).map((id) => {
+
+
+                                { console.log(loggedInUserAnsweredQuestions) }
+                                const questionParsed = question.id
+                                { console.log(question.id) }
+
+                                <h1>    {loggedInUserAnsweredQuestions == questionParsed ? questionParsed : ""}
+
+                                </h1>
+
+
+                            })
+                        }
+
+
+                    })}
 
 
 
-                <h1> {Object.keys(users).forEach(function (key) {
 
+                    <h1>
+                    </h1>
 
-                    (Object.keys(users[key].answers).map((user) => {
-                        return { user }
-                    })
-                    )
-                })}
-                </h1>
-
-
+                </p>
 
             </div>
         )
@@ -47,6 +67,12 @@ const mapStateToProps = (state, { question }) => {
 export default connect(mapStateToProps)(AskedUnansweredQuestions)
 
 /**
+ *
+ *                 {Object.keys(loggedInUser).map((id) => {
+               return  <h1>  {id} </h1>
+
+                })}
+
  * what is needed?
  *      well clearly i have all of the names of the votes.
  *
