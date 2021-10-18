@@ -8,8 +8,8 @@ export class Question extends Component {
         return (
             <div>
             
-    
-        <AskedUnansweredQuestions/>
+    {console.log(this.props.optionOne)}
+        <AskedUnansweredQuestions optionOne={this.props.optionOne} question={this.props.question}/>
  
             </div>
         )
@@ -31,6 +31,8 @@ function mapStateToProps({users, questions, loggedInUser},{id}) {
     
 
     return {
+        optionOne,
+        optionTwo,
         loggedInUser, 
     question: formatQuestion({optionOneText, optionTwoText, author})
 
