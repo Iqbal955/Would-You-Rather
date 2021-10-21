@@ -16,7 +16,7 @@ export class WouldYouRather extends Component {
         console.log(this.props)
         return (
             <div>
-                <h1> 
+                <p> 
                 {Object.keys(this.props.questionsID).map((id) => {
                     return <h1>
 
@@ -24,7 +24,7 @@ export class WouldYouRather extends Component {
                     </h1>
                
                 })}
-                </h1>
+                </p>
             </div>
         )
     }

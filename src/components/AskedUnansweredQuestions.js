@@ -1,70 +1,68 @@
-//PURPOSE: TO FIGURE OUT IF THE PASSED QUESTIONS ARE ANSWERED OR UNANSWERED 
+//PURPOSE: TO FIGURE OUT IF THE PASSED QUESTIONS ARE ANSWERED OR UNANSWERED
 //AND DISPLAY ACCORDINGLY
 
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 export class AskedUnansweredQuestions extends Component {
-    render() {
-        const votesProps = this.props.optionOne.votes;
-        const question = this.props.question
-        const users = this.props.users;
-        const loggedInUser = this.props.loggedInUser.answers;
+  render() {
+    const votesProps = this.props.optionOne.votes;
+    const question = this.props.question;
+    const users = this.props.users;
+    const loggedInUser = this.props.loggedInUser.answers;
 
-        const loggedInUserAnsweredQuestions = "";
-        const questionParsed = "";
-
-
-        return (
-            <div>
-                <p>
-                    {Object.keys(loggedInUser).map((id) => {
-
-                        const loggedInUserAnsweredQuestions = id;
-
-                        {
-                            Object.keys(question.id).map((id) => {
-
-
-                                { console.log(loggedInUserAnsweredQuestions) }
-                                const questionParsed = question.id
-                                { console.log(question.id) }
-
-                                <h1>    {loggedInUserAnsweredQuestions == questionParsed ? questionParsed : ""}
-
-                                </h1>
-
-
-                            })
-                        }
-
-
-                    })}
+    let loggedInUserAnsweredQuestions = "";
+    let questionParsed = "";
 
 
 
-
-                    <h1>
-                    </h1>
-
-                </p>
-
-            </div>
-        )
+    {
+    Object.keys(loggedInUser)
+  .forEach(function eachKey(id) { 
+      
+    loggedInUserAnsweredQuestions = id
+    console.log(loggedInUserAnsweredQuestions);
+  
+  });
     }
+
+
+
+    {
+      Object.keys(question.id).map((id) => {
+         
+        questionParsed = question.id;
+        console.log(questionParsed)
+      });
+    }
+
+    const answeredQuestion = loggedInUserAnsweredQuestions == questionParsed && questionParsed
+
+    return (
+      <div>
+        <p>
+          <h1>
+            <h1>
+
+              {answeredQuestion
+                }
+            </h1>
+          </h1>
+        </p>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state, { question }) => {
-    return {
-        question,
-        users: state.users,
-        loggedInUser: state.users.sarahedo
-    }
-}
+  return {
+    question,
+    users: state.users,
+    loggedInUser: state.users.sarahedo,
+  };
+};
 
-
-
-export default connect(mapStateToProps)(AskedUnansweredQuestions)
+export default connect(mapStateToProps)(AskedUnansweredQuestions);
 
 /**
  *

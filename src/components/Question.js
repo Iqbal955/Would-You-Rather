@@ -34,7 +34,7 @@ function mapStateToProps({users, questions, loggedInUser},{id}) {
         optionOne,
         optionTwo,
         loggedInUser, 
-    question: formatQuestion({optionOneText, optionTwoText, author})
+        question
 
     }
 }
