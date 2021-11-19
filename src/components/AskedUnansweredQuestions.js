@@ -6,59 +6,44 @@ import { connect } from "react-redux";
 
 export class AskedUnansweredQuestions extends Component {
   render() {
-    const votesProps = this.props.optionOne.votes;
-    const question = this.props.question;
-    const users = this.props.users;
+    const questionData = this.props.question;
+
     const loggedInUser = this.props.loggedInUser.answers;
 
-    let loggedInUserAnsweredQuestions = "";
-    let questionParsed = "";
+    const loggedInUserAnswers = Object.keys(loggedInUser).map((id) => {
+      return id;
+    });
 
+    const ans = loggedInUserAnswers.filter(
+      (id) => questionData.question.id === id
+    );
 
+    const notans = loggedInUserAnswers.filter((notansid) => console.log(notansid))
 
-    {
-    Object.keys(loggedInUser)
-  .forEach(function eachKey(id) { 
-      
-    loggedInUserAnsweredQuestions = id
-    console.log(loggedInUserAnsweredQuestions);
-  
-  });
-    }
-
-
-
-    {
-      Object.keys(question.id).map((id) => {
-         
-        questionParsed = question.id;
-        console.log(questionParsed)
-      });
-    }
-
-    const answeredQuestion = loggedInUserAnsweredQuestions == questionParsed && questionParsed
 
     return (
       <div>
+ 
         <p>
-          <h1>
-            <h1>
-
-              {answeredQuestion
-                }
-            </h1>
-          </h1>
+   
+          {ans.map((id) => (
+            <p>Answered Quesiton: {id}</p>
+          ))}
         </p>
+
+              <p>
+              
+              </p>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, { question }) => {
+const mapStateToProps = ({ users }, question) => {
   return {
     question,
-    users: state.users,
-    loggedInUser: state.users.sarahedo,
+    users: users,
+    loggedInUser: users.sarahedo,
   };
 };
 

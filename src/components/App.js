@@ -31,13 +31,9 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    allState: state,
-    questionsID: state.questions
 
-})
 
-export default connect(mapStateToProps)(App)
+export default connect()(App)
 
 /*question 4? so the reason
 we need to use connect is because of this:

@@ -17,27 +17,14 @@ export class WouldYouRather extends Component {
         return (
             <div>
                 <p> 
-                {Object.keys(this.props.questionsID).map((id) => {
-                    return <h1>
-
-                    <Question id={id} />
-                    </h1>
-               
-                })}
+                <Question />
                 </p>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-
-    questionsID: state.questions
-    
-
-})
 
 
-
-export default connect(mapStateToProps)(WouldYouRather)
+export default connect()(WouldYouRather)
 

@@ -1,49 +1,39 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {formatQuestion} from "../utils/_DATA"
-import AskedUnansweredQuestions from "./AskedUnansweredQuestions"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { formatQuestion } from "../utils/_DATA";
+import AskedUnansweredQuestions from "./AskedUnansweredQuestions";
 
 export class Question extends Component {
-    render() {
-        return (
-            <div>
-            
-    {console.log(this.props.optionOne)}
-        <AskedUnansweredQuestions optionOne={this.props.optionOne} question={this.props.question}/>
- 
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        {Object.keys(this.props.questions).map((id) => {
+          return (
+              <AskedUnansweredQuestions
+                question={this.props.questions[id]}
+               
+              />
+          );
+        })}
+      </div>
+    );
+  }
 }
 
-function mapStateToProps({users, questions, loggedInUser},{id}) {
-
-   const question = questions[id];
-   const {optionOne, optionTwo, author} = question
-   const optionOneText = optionOne.text
-   const optionTwoText = optionTwo.text
-
-    //checking the votes, if the user is not part of the votes, then clearly this question is not
-    //is unanswered.
-    loggedInUser = "sarahedo"
+function mapStateToProps({ users, questions, loggedInUser }) {
 
 
-    
+  //checking the votes, if the user is not part of the votes, then clearly this question is not
+  //is unanswered.
+  loggedInUser = "sarahedo";
 
-    return {
-        optionOne,
-        optionTwo,
-        loggedInUser, 
-        question
-
-    }
+  return {
+    loggedInUser,
+    questions,
+  };
 }
 
-
-
-
-
-    /* 
+/* 
     //I need the specific question, not all questions. 
     //where is the question you want stored? 
     // its stored in dashboards 
@@ -65,5 +55,4 @@ function mapStateToProps({users, questions, loggedInUser},{id}) {
 
     */
 
-
-export default connect(mapStateToProps)(Question)
+export default connect(mapStateToProps)(Question);
