@@ -8,9 +8,15 @@ export class AskedUnansweredQuestions extends Component {
   render() {
     const questionData = this.props.question;
 
-    const loggedInUser = this.props.loggedInUser.answers;
+    const loggedInUserAnswer = this.props.loggedInUser.answers;
 
-    const loggedInUserAnswers = Object.keys(loggedInUser).map((id) => {
+    const currentUserID = this.props.loggedInUser.id;
+
+    let optionOne = "";
+
+    let optionTwo = "";
+
+    const loggedInUserAnswers = Object.keys(loggedInUserAnswer).map((id) => {
       return id;
     });
 
@@ -18,22 +24,38 @@ export class AskedUnansweredQuestions extends Component {
       (id) => questionData.question.id === id
     );
 
-    const notans = loggedInUserAnswers.filter((notansid) => console.log(notansid))
-
+    const notAns = loggedInUserAnswers.filter(
+      (notAnsid) => questionData.question.id !== notAnsid
+    ); //First question - Why is this logic for not answered questions not working.
 
     return (
       <div>
- 
         <p>
-   
-          {ans.map((id) => (
-            <p>Answered Quesiton: {id}</p>
-          ))}
-        </p>
+          Answered Question
+          {ans.map(() => {
+            
+            // Second question - Why is nothing being returned despite it being logged in the console. 
+            optionOne = questionData.question.optionOne.votes.toString();
+            {
+              optionOne == currentUserID && (
+                <h2>
+                  Option One {questionData.question.optionOne.text}
+                </h2>
+              );
 
-              <p>
-              
-              </p>
+              optionTwo = questionData.question.optionTwo.votes.toString();
+              {
+                optionTwo == currentUserID && (
+                  <h2>
+                    
+                    Option Two
+                    {console.log(questionData.question.optionTwo.text)}
+                  </h2>
+                );
+              }
+            }
+          })}
+        </p>
       </div>
     );
   }
@@ -48,83 +70,3 @@ const mapStateToProps = ({ users }, question) => {
 };
 
 export default connect(mapStateToProps)(AskedUnansweredQuestions);
-
-/**
- *
- *                 {Object.keys(loggedInUser).map((id) => {
-               return  <h1>  {id} </h1>
-
-                })}
-
- * what is needed?
- *      well clearly i have all of the names of the votes.
- *
- *  so what do you need?
- *
- *      well i need the ID of the answers that these people have voted for
- *
- * why do you need that?
- *
- *      because i want to render all of the questions that people have answered for
- *
- * but why do you need the id?
- *
- *      because the ID will tell me what text to render for
- *
- *
- * ----------------------------------------------------------------
- * ok, but how is the current structure for votes?
- *
- *
-                *  votes {
-                * [username ]}
-                *
- *
- * what is the setup of question?
- *
-            id: "lld3ij19219pp6lfuwigz8"
-            optionOne:
-                    {votes: Array(0), text: 'have horrible short term memory'}
-            optionTwo:
-                    {votes: Array(0), text: 'have horrible long term memory'}
-
- *
-
-    so what is the structure to get the ID?
-
-
-
-                        id*
-                            optionOne
-                                      votes
-
-
-    so you need to go up twice. Whats the purpose of even get votes by them selves
-    should you get it in association with the id?
-
-                    well i do get the id of the users that asnwered. Also its good
-                    for login, to know ok well who of these answered, but not right now
-
- *
-
-    so how do you access the votes in association with the id?
-
-                    question.id -> then i have the ID
-                        votes then i have the vote
-
-
-
-                    can i do something like,
-                    if the question.id.optionOne.votes == vores && question.id
-
-
-
-
-    wait! The users has all data about the answers and the questions!!!
-                    if you can simply just check the questions that is also within
-                    the users.answers object
-
-
-
- * /
- * */

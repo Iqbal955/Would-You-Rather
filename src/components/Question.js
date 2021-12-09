@@ -9,6 +9,7 @@ export class Question extends Component {
       <div>
         {Object.keys(this.props.questions).map((id) => {
           return (
+            //It keeps repeating Answered Question h2
               <AskedUnansweredQuestions
                 question={this.props.questions[id]}
                
@@ -32,27 +33,5 @@ function mapStateToProps({ users, questions, loggedInUser }) {
     questions,
   };
 }
-
-/* 
-    //I need the specific question, not all questions. 
-    //where is the question you want stored? 
-    // its stored in dashboards 
-
-    //so how do we get access to a a specific one?
-    //we give the question 
-    //////compoennt the id of the specific question to render
-    //so what is that? its a prop.
-    //correct. So how do we get access? Well, first and foremost we can pass it as a
-    //arg in mapStateToProps. 
-    //
-    // so what do we need in mapStateToProps?
-            we need the ID.
-
-    OK, what other things do need to be displayed that the store has?
-    user -> what specific user did this question belong to?
-    loggedInUser -> who asked this question?
-    questions -> we need all questions, and then need a specific ID to look up.
-
-    */
 
 export default connect(mapStateToProps)(Question);
