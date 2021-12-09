@@ -6,54 +6,56 @@ import { connect } from "react-redux";
 
 export class AskedUnansweredQuestions extends Component {
   render() {
-    const questionData = this.props.question;
-
-    const loggedInUserAnswer = this.props.loggedInUser.answers;
-
-    const currentUserID = this.props.loggedInUser.id;
-
-    let optionOne = "";
-
-    let optionTwo = "";
-
-    const loggedInUserAnswers = Object.keys(loggedInUserAnswer).map((id) => {
-      return id;
+    const questionData = Object.keys(this.props.questions).map((id) => {
+      return this.props.questions[id];
     });
 
-    const ans = loggedInUserAnswers.filter(
-      (id) => questionData.question.id === id
+    const loggedInUserAnswer = this.props.loggedInUser?.answers;
+
+    const currentUserID = this.props.loggedInUser?.id;
+
+    const loggedInUserAnswers =
+      loggedInUserAnswer &&
+      Object.keys(loggedInUserAnswer).map((id) => {
+        return id;
+      });
+
+    const ans = questionData.filter((question) =>
+      loggedInUserAnswers.find((id) => question.id === id)
     );
 
-    const notAns = loggedInUserAnswers.filter(
-      (notAnsid) => questionData.question.id !== notAnsid
-    ); //First question - Why is this logic for not answered questions not working.
+    const optOne = questionData.filter(
+      (quest) => quest.optionOne.votes.toString() === currentUserID
+    );
+    const optTwo = questionData.filter(
+      (quest) => quest.optionTwo.votes.toString() === currentUserID
+    );
+
+    const notAns = questionData.filter((question) => !loggedInUserAnswers.includes(question.id)); 
+    //First question - Why is this logic for not answered questions not working.
 
     return (
       <div>
         <p>
           Answered Question
-          {ans.map(() => {
-            
-            // Second question - Why is nothing being returned despite it being logged in the console. 
-            optionOne = questionData.question.optionOne.votes.toString();
-            {
-              optionOne == currentUserID && (
-                <h2>
-                  Option One {questionData.question.optionOne.text}
-                </h2>
-              );
-
-              optionTwo = questionData.question.optionTwo.votes.toString();
-              {
-                optionTwo == currentUserID && (
-                  <h2>
-                    
-                    Option Two
-                    {console.log(questionData.question.optionTwo.text)}
-                  </h2>
-                );
-              }
-            }
+          <div>
+            {optOne.map((q) => (
+              <p>{q.optionOne.text}</p>
+            ))}
+          </div>
+          <div>
+            {optTwo.map((q) => (
+              <p>{q.optionTwo.text}</p>
+            ))}
+          </div>
+          <p>......................................................</p>
+          {ans.map((ansQ) => {
+            return (
+              <p>
+                {(ansQ.optionOne.votes.includes(currentUserID) && ansQ.optionOne.text) ||
+                  (ansQ.optionTwo.votes.includes(currentUserID) && ansQ.optionTwo.text)}
+              </p>
+            );
           })}
         </p>
       </div>
@@ -61,8 +63,9 @@ export class AskedUnansweredQuestions extends Component {
   }
 }
 
-const mapStateToProps = ({ users }, question) => {
+const mapStateToProps = ({ users, questions }, question) => {
   return {
+    questions,
     question,
     users: users,
     loggedInUser: users.sarahedo,
